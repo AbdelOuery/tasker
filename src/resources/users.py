@@ -14,7 +14,7 @@ url = '/api/user'
 @jwt_required
 def get_all_users():
     users = []
-    for user in db.users.find():
+    for user in db.users.find().sort('_id', -1):
         users.append(user)
     return jsonify({'users': users}), 200
 
